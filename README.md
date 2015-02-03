@@ -1,9 +1,10 @@
 This is a java command line utility that converts a set of existing CodeIgniter language files into a number of CSV files.
 The CSV files will be structured such that all translations are easily managable. Format is as follows
 
-   lang    |     lang1    |    lang2
-----------------------------------------
-label name | translation1 | translation2
+
+       label   |     lang1    |    lang2
+    ----------------------------------------
+    label name | translation1 | translation2
 
 Starting from the CSV files, language files can be automatically generated using the generate_languages.php script
 
