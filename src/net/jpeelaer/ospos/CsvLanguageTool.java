@@ -28,6 +28,8 @@ public class CsvLanguageTool {
 					+ File.separator + ".." 
 					+ File.separator + "translations";
 			new CsvLanguageTool().createLanguageLines(languagePath).toCsv(languagePath, translationFolder);
+		} else {
+			System.out.println("Usage: java -jar ci-language-tool-0.1-SNAPSHOT.jar <languagfilepath>");
 		}
 	}
 	
@@ -42,6 +44,7 @@ public class CsvLanguageTool {
 			translationCount++;
 			String language = langDir.getName();
 			if (langDir.isDirectory()) {
+				System.out.println("found language " + langDir.getName());
 				languages.add(langDir.getName());
 				for (File file : langDir.listFiles()) {
 					BufferedReader reader = null;
