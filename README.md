@@ -14,7 +14,7 @@ To compile and run, issues the following command
      cd ci-language-tool
      mvn install
      cd target
-     java -jar ci-language-tool-0.1-SNAPSHOT.jar <path/to/ci-language-folder>
+     java -jar ci-language-tool.jar <path/to/ci-language-folder>
 
 If you are done editing the CSV files and want to generate the language files out of it, execute following command
 
