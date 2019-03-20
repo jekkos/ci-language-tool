@@ -8,6 +8,8 @@ The CSV files will be structured such that all translations are easily managable
 
 Starting from the CSV files, language files can be automatically generated using the generate_languages.php script
 
+
+## Compile from source ##
 To compile and run, issues the following command
 
      git clone https://github.com/jekkos/ci-language-tool.git
@@ -20,3 +22,10 @@ If you are done editing the CSV files and want to generate the language files ou
 
     cd ci-language-tool
     php generate_languages.php
+
+
+## Run using Docker ##
+
+To run this tool using docker, use following command in your CI repository root
+
+`docker run -v application:/app/appication jekkos/ci-language-tool`
