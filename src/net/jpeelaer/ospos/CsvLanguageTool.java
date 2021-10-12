@@ -40,26 +40,32 @@ public class CsvLanguageTool {
 	private CsvLanguageTool createLanguageLines(String languagePath) throws IOException {
 		File path = new File(languagePath);
 		int translationCount = 0;
-		for (File langDir : path.listFiles()) {
-			translationCount++;
-			String language = langDir.getName();
-			if (langDir.isDirectory()) {
-				System.out.println("found language " + langDir.getName());
-				languages.add(langDir.getName());
-				for (File file : langDir.listFiles()) {
-					BufferedReader reader = null;
-					try {
-						reader = new BufferedReader(new FileReader(file));
-						String line = "";
-						while((line=reader.readLine()) != null) {
-							Matcher matcher = pattern.matcher(line);
-							if (matcher.matches()) {
-								addLanguageLine(language, file, matcher, translationCount);
+		if (!path.exists()) {
+			System.out.println(path + " does not exist!");
+		} else {
+			for (File langDir : path.listFiles()) {
+				translationCount++;
+				String language = langDir.getName();
+				if (langDir.isDirectory()) {
+					System.out.println("found language " + langDir.getName());
+					languages.add(langDir.getName());
+					for (File file : langDir.listFiles()) {
+						BufferedReader reader = null;
+						try {
+							reader = new BufferedReader(new FileReader(file));
+							String line = "";
+							while((line=reader.readLine()) != null) {
+								Matcher matcher = pattern.matcher(line);
+								if (matcher.matches()) {
+									addLanguageLine(language, file, matcher, translationCount);
+								}
+							}
+						} finally {
+							if (reader != null) {
+								reader.close();
+								System.out.println("Done reading!!");
 							}
 						}
-					} finally {
-						reader.close();
-						System.out.println("Done reading!!");
 					}
 				}
 			}
